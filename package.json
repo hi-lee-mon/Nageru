@@ -3,17 +3,15 @@
   "displayName": "Nageru",
   "description": "Send file context (path + line range) to AI CLI tools",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hi-lee-mon/Nageru"
+  },
   "engines": {
     "vscode": "^1.95.0"
   },
   "categories": [
     "Other"
-  ],
-  "files": [
-    "dist/**",
-    "assets/logo.png",
-    "README.md",
-    "README_ja.md"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
