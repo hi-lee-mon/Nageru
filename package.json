@@ -1,0 +1,147 @@
+{
+  "name": "nageru",
+  "displayName": "Nageru",
+  "description": "Send file context (path + line range) to AI CLI tools",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "files": [
+    "dist/**",
+    "assets/logo.png",
+    "README.md",
+    "README_ja.md"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nageru.send",
+        "title": "Send File Context to Terminal",
+        "category": "Nageru"
+      },
+      {
+        "command": "nageru.copyOnly",
+        "title": "Copy File Context to Clipboard",
+        "category": "Nageru"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "nageru.send",
+        "key": "ctrl+shift+;",
+        "mac": "cmd+shift+;",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "nageru.send",
+          "group": "nageru@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "nageru.copyOnly",
+          "group": "nageru@2",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Nageru",
+      "properties": {
+        "nageru.format": {
+          "type": "string",
+          "default": "claude-code",
+          "enum": [
+            "claude-code",
+            "codex",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "@file#L5-L10 format for Claude Code CLI",
+            "file:5-10 format for Codex CLI",
+            "User-defined template"
+          ],
+          "description": "Output format for file context"
+        },
+        "nageru.customFormat": {
+          "type": "string",
+          "default": "${filePath}:${startLine}-${endLine}",
+          "description": "Custom format template. Available variables: ${filePath}, ${startLine}, ${endLine}"
+        },
+        "nageru.pathType": {
+          "type": "string",
+          "default": "relative",
+          "enum": [
+            "relative",
+            "absolute"
+          ],
+          "enumDescriptions": [
+            "Workspace-relative path",
+            "Absolute file path"
+          ],
+          "description": "Path type to use in output"
+        },
+        "nageru.sendMethod": {
+          "type": "string",
+          "default": "both",
+          "enum": [
+            "both",
+            "clipboard",
+            "terminal"
+          ],
+          "enumDescriptions": [
+            "Send to terminal and copy to clipboard",
+            "Copy to clipboard only",
+            "Send to terminal only"
+          ],
+          "description": "How to send the file context"
+        },
+        "nageru.focusTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Move focus to terminal after sending context"
+        },
+        "nageru.appendSpace": {
+          "type": "boolean",
+          "default": true,
+          "description": "Append a trailing space to the text sent to terminal"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "geni":"pnpm run package && pnpm exec vsce package --no-dependencies && code --install-extension nageru-0.1.0.vsix"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.95.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.52.0"
+  }
+}
