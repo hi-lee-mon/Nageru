@@ -127,19 +127,20 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test",
-    "geni":"pnpm run package && pnpm exec vsce package --no-dependencies && code --install-extension nageru-0.1.0.vsix"
+    "geni": "pnpm run package && pnpm exec vsce package --no-dependencies && code --install-extension nageru-0.1.0.vsix"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "@types/vscode": "^1.95.0",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.7.1",
-    "esbuild": "^0.27.2",
-    "eslint": "^9.39.2",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.52.0"
-  }
+    "@types/mocha": "10.0.10",
+    "@types/node": "22.19.11",
+    "@types/vscode": "1.109.0",
+    "@vscode/test-cli": "0.0.12",
+    "@vscode/test-electron": "2.5.2",
+    "@vscode/vsce": "3.7.1",
+    "esbuild": "0.27.3",
+    "eslint": "9.39.2",
+    "npm-run-all": "4.1.5",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.0"
+  },
+  "packageManager": "pnpm@12.6.0"
 }
