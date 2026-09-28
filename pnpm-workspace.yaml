@@ -1,2 +1,32 @@
 ignoredBuiltDependencies:
-  - esbuild
+- esbuild
+minimumReleaseAge: 4320
+saveExact: true
+preferFrozenLockfile: true
+overrides:
+  diff: 8.0.3
+  minimatch@3: 3.1.4
+  minimatch@9: 9.0.7
+  minimatch@10: 10.2.6
+  serialize-javascript: 7.0.5
+  ajv@6: 6.15.0
+  flatted: 3.4.4
+  undici: 7.29.0
+  brace-expansion@1: 1.1.18
+  brace-expansion@2: 2.1.4
+  brace-expansion@>=4: 5.0.12
+  picomatch@2: 2.3.2
+  picomatch@>=4: 4.0.7
+  lodash: 4.18.1
+  underscore: 1.13.8
+  uuid: 11.1.1
+  qs: 6.16.0
+  shell-quote: 1.9.0
+  tmp: 0.2.7
+  esbuild: 0.28.2
+  form-data: 4.0.6
+  markdown-it: 14.2.0
+  linkify-it: 5.0.2
+  js-yaml: 4.3.2
+  fast-uri@3: 3.1.6
+  '@humanfs/node': 0.17.0
